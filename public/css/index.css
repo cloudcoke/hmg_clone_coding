@@ -1,0 +1,359 @@
+@charset "utf-8";
+/* HDharmony */
+@font-face {
+  font-family: "HyundaiHarmony";
+  src: url(../fonts/hyundai/HDharmonyB.eot);
+  src: url(../fonts/hyundai/HDharmonyB.eot?#iefix) format("embedded-opentype"), url(../fonts/hyundai/HDharmonyB.woff2) format("woff2"),
+    url(../fonts/hyundai/HDharmonyB.woff) format("woff"), url(../fonts/hyundai/HDharmonyB.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HyundaiHarmony";
+  src: url(../fonts/hyundai/HDharmonyM.eot);
+  src: url(../fonts/hyundai/HDharmonyM.eot?#iefix) format("embedded-opentype"), url(../fonts/hyundai/HDharmonyM.woff2) format("woff2"),
+    url(../fonts/hyundai/HDharmonyM.woff) format("woff"), url(../fonts/hyundai/HDharmonyM.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HyundaiHarmony";
+  src: url(../fonts/hyundai/HDharmonyL.eot);
+  src: url(../fonts/hyundai/HDharmonyL.eot?#iefix) format("embedded-opentype"), url(../fonts/hyundai/HDharmonyL.woff2) format("woff2"),
+    url(../fonts/hyundai/HDharmonyL.woff) format("woff"), url(../fonts/hyundai/HDharmonyL.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* HyundaiSansHeadKR */
+@font-face {
+  font-family: "HyundaiSansHeadKR";
+  src: url(../fonts/hyundai/HyundaiSansHeadKRBold.eot);
+  src: url(../fonts/hyundai/HyundaiSansHeadKRBold.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/hyundai/HyundaiSansHeadKRBold.woff2) format("woff2"), url(../fonts/hyundai/HyundaiSansHeadKRBold.woff) format("woff"),
+    url(../fonts/hyundai/HyundaiSansHeadKRBold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HyundaiSansHeadKR";
+  src: url(../fonts/hyundai/HyundaiSansHeadKRMedium.eot);
+  src: url(../fonts/hyundai/HyundaiSansHeadKRMedium.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/hyundai/HyundaiSansHeadKRMedium.woff2) format("woff2"), url(../fonts/hyundai/HyundaiSansHeadKRMedium.woff) format("woff"),
+    url(../fonts/hyundai/HyundaiSansHeadKRMedium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HyundaiSansHeadKR";
+  src: url(../fonts/hyundai/HyundaiSansHeadKRRegular.eot);
+  src: url(../fonts/hyundai/HyundaiSansHeadKRRegular.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/hyundai/HyundaiSansHeadKRRegular.woff2) format("woff2"), url(../fonts/hyundai/HyundaiSansHeadKRRegular.woff) format("woff"),
+    url(../fonts/hyundai/HyundaiSansHeadKRRegular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HyundaiSansHeadKR";
+  src: url(../fonts/hyundai/HyundaiSansHeadKRLight.eot);
+  src: url(../fonts/hyundai/HyundaiSansHeadKRLight.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/hyundai/HyundaiSansHeadKRLight.woff2) format("woff2"), url(../fonts/hyundai/HyundaiSansHeadKRLight.woff) format("woff"),
+    url(../fonts/hyundai/HyundaiSansHeadKRLight.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* HyundaiSansTextKR */
+@font-face {
+  font-family: "HyundaiSansTextKR";
+  src: url(../fonts/hyundai/HyundaiSansTextKRBold.eot);
+  src: url(../fonts/hyundai/HyundaiSansTextKRBold.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/hyundai/HyundaiSansTextKRBold.woff2) format("woff2"), url(../fonts/hyundai/HyundaiSansTextKRBold.woff) format("woff"),
+    url(../fonts/hyundai/HyundaiSansTextKRBold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HyundaiSansTextKR";
+  src: url(../fonts/hyundai/HyundaiSansTextKRMedium.eot);
+  src: url(../fonts/hyundai/HyundaiSansTextKRMedium.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/hyundai/HyundaiSansTextKRMedium.woff2) format("woff2"), url(../fonts/hyundai/HyundaiSansTextKRMedium.woff) format("woff"),
+    url(../fonts/hyundai/HyundaiSansTextKRMedium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HyundaiSansTextKR";
+  src: url(../fonts/hyundai/HyundaiSansTextKRRegular.eot);
+  src: url(../fonts/hyundai/HyundaiSansTextKRRegular.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/hyundai/HyundaiSansTextKRRegular.woff2) format("woff2"), url(../fonts/hyundai/HyundaiSansTextKRRegular.woff) format("woff"),
+    url(../fonts/hyundai/HyundaiSansTextKRRegular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "HyundaiHarmony", "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  background: #000;
+  color: #444;
+}
+
+.transparent {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.inner {
+  width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.inner > h1 {
+  /* base .inner */
+  position: absolute;
+}
+
+nav {
+  padding-left: 256px;
+  height: 90px;
+}
+
+.one-dep {
+  display: flex;
+}
+
+.one-dep > li > a {
+  display: inline-block;
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  font-size: 18px;
+  height: 90px;
+  color: #fff;
+  padding: 30px 24px 32px 24px;
+}
+
+.one-dep > li:last-child > a {
+  margin-left: 48px;
+}
+
+.one-dep > li:last-child > a::before {
+  /* base .inner */
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 18px;
+  top: 50%;
+  left: 58%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.t-layout {
+  /* base .inner */
+  display: flex;
+  position: absolute;
+  top: 90px;
+  left: 0px;
+  width: 100%;
+  height: 290px;
+  padding: 40px 0 80px 0;
+  /* display: none; */
+}
+
+.intro-cate {
+  padding-right: 48px;
+  width: 328px;
+  border-right: 1px solid #333;
+}
+
+.menu {
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.desc {
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 19px;
+}
+
+.two-dep {
+  position: relative;
+  padding: 0 48px 0 20px;
+  width: 308px;
+}
+
+.two-dep > li + li {
+  margin-top: 24px;
+}
+
+.depth2 {
+  display: block;
+  position: relative;
+  font-size: 22px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.thr-dep {
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  /* base .two-dep */
+  position: absolute;
+  top: 0;
+  left: 306px;
+  padding-left: 20px;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #333;
+}
+
+.thr-dep > li + li {
+  margin-top: 18px;
+}
+
+.depth3 {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* 작업을 위한 임시 class */
+.center {
+  display: none;
+}
+
+.driving-program {
+  display: none;
+}
+
+.thr-experience {
+  display: none;
+}
+.thr-pleasure {
+  display: none;
+}
+
+.service {
+  display: none;
+}
+
+.thr-N-festival {
+  display: none;
+}
+
+.thr-N-e-festival {
+  display: none;
+}
+
+.thr-N-cycle-festival {
+  display: none;
+}
+
+.hyudai-n {
+  display: none;
+}
+
+/* 작업을 위한 임시 class 끝*/
+
+.utils {
+  display: flex;
+  align-items: center;
+}
+
+.utils > .log-prop {
+  margin-right: 6px;
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+}
+
+.utils > .log-prop > a {
+  padding: 8px;
+  color: #fff;
+}
+
+.img-box {
+  /* base .two-dep */
+  position: absolute;
+  top: 38px;
+  right: 0;
+  width: 428px;
+  height: 170px;
+  overflow: hidden;
+}
+
+.btn-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+}
+
+.btn-wrap > a {
+  display: block;
+  height: 48px;
+  line-height: 46px;
+  color: #222;
+  margin-left: 10px;
+  padding: 0 32px;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  background: #fff;
+}
+
+.btn-wrap > a > span {
+  display: inline-block;
+  padding-right: 20px;
+  position: relative;
+  font-size: 16px;
+  background: url(../images/low_arrow.svg) no-repeat right center;
+}
+
+.slide-box {
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  /* base .btn-wrap */
+  position: absolute;
+  top: 56px;
+  right: 0;
+  padding: 20px 30px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  width: 196px;
+  /* display: none; */
+}
+
+.slide-box > a {
+  display: block;
+  padding: 12px 0;
+  font-size: 16px;
+}
+
+.slide-box > a > span {
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 16px;
+}
