@@ -341,10 +341,6 @@ header.hover::before {
   height: 380px;
 }
 
-/* header.hover::before .t-layout:hover {
-  height: 380px;
-} */
-
 .one-dep > li.active > a {
   color: #f25130;
 }
@@ -367,4 +363,26 @@ header.hover::before {
 
 .btn.high[checked="checked"] > span {
   background: url(../images/low_arrow_white.svg) no-repeat right center;
+}
+
+.two-dep > li.active .depth2 {
+  color: #fff;
+}
+
+.two-dep > li.active .depth2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -21px;
+  width: 2px;
+  height: 100%;
+  background: #f25130;
+}
+
+.two-dep > li.active .thr-dep {
+  display: block;
+}
+
+.thr-dep > li.active .depth3 {
+  color: #fff;
 }
