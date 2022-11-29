@@ -1,62 +1,83 @@
 const header = document.querySelector("header");
 const inner = document.querySelector(".inner");
 const headerOneDepList = document.querySelectorAll("nav > .one-dep > li");
-const headerOneDepListA = document.querySelectorAll("nav > .one-dep > li > a");
 const diffLine = document.querySelector(".diff-line");
 const utils = document.querySelector(".utils");
+const tLayoutList = document.querySelectorAll(".t-layout");
+
+const removeActive = (list) => {
+  for (let i = 0; i < list.length; i++) {
+    list[i].classList.remove("active");
+  }
+};
+
+const tLayoutRemoveFlex = () => {
+  for (let i = 0; i < tLayoutList.length; i++) {
+    tLayoutList[i].style.display = "none";
+  }
+};
 
 // 헤더에 마우스 오버시 active
 const innerOverHandler = (e) => {
-  //   console.log(e.target.classList.contains("depth1"));
-  if (e.target.classList.contains("depth1")) {
-    e.target.parentNode.classList.add("active");
-    diffLine.parentNode.classList.remove("active");
-  }
-  if (e.target.classList.contains("diff-line")) {
-    e.target.parentNode.classList.add("active");
-  }
-  if (e.target.tagName === "IMG") {
+  if (e.target.classList.contains("diff")) {
+    header.classList.remove("hover");
+    tLayoutRemoveFlex();
+    removeActive(headerOneDepList);
+    const depth1Li = e.target.parentNode.classList;
+    depth1Li.add("active");
     return;
+  }
+  if (e.target.classList.contains("depth1")) {
+    removeActive(headerOneDepList);
+    tLayoutRemoveFlex();
+    const depth1Li = e.target.parentNode.classList;
+    depth1Li.add("active");
+    const tLayOut = e.target.nextElementSibling;
+    tLayOut.style.display = "flex";
+  }
+  if (e.target.parentNode.classList.contains("logo")) {
+    header.classList.remove("hover");
+    removeActive(headerOneDepList);
+    tLayoutRemoveFlex();
   }
   if (e.target.parentNode.classList.contains("active")) {
     header.classList.add("hover");
   }
 };
 
-// 헤더에 마우스 오버시 검은바
-const innerOutHandler = (e) => {
-  if (e.target.classList.contains("diff-line")) {
+// 마우스 아웃시 hover 제거
+const innerLeaveHandler = (e) => {
+  if (header.classList.contains("hover")) {
     return;
-    // e.target.parentNode.classList.remove("active");
+  } else {
+    removeActive(headerOneDepList);
+    tLayoutRemoveFlex();
   }
-  //   console.log(e.target.tagName);
-  e.target.parentNode.classList.remove("active");
-  if (e.target.tagName === "IMG") {
-    header.classList.remove("hover");
-  }
+};
+
+const innerOutHandler = (e) => {
   if (e.target.tagName === "NAV") {
     header.classList.remove("hover");
   }
-  //   console.log(e.target.parentNode);
 };
 
 inner.addEventListener("mouseover", innerOverHandler);
+inner.addEventListener("mouseleave", innerLeaveHandler);
 inner.addEventListener("mouseout", innerOutHandler);
 
-// diff-line 색 없애기, 예약하기 이벤트
+// diff-line 색 없애기, utils 마우스 오버시 hover 제거
 const utilsOverHandler = (e) => {
+  header.classList.remove("hover");
   diffLine.parentNode.classList.remove("active");
+  tLayoutRemoveFlex();
 };
-
-const utilsOutHandler = (e) => {};
 
 utils.addEventListener("mouseover", utilsOverHandler);
 
+// 예약하기 이벤트
 const reserve = document.querySelector(".btn-wrap > .btn");
-console.log(reserve);
 
 const reserveHandler = (e) => {
-  //   console.log(e.target.getAttribute("checked"));
   if (reserve.getAttribute("checked") === null) {
     reserve.setAttribute("checked", "checked");
   } else {
@@ -66,73 +87,55 @@ const reserveHandler = (e) => {
 
 reserve.addEventListener("click", reserveHandler);
 
-// 헤더에 마우스 오버시 LNB 보이기
+// two-depth 검은바
 
-// const overHandler = (e) => {
-//   if (e.target.classList.contains("diff")) {
-//     return;
-//   }
-//   header.classList.add("hover");
-//   e.target.parentNode.classList.add("active");
-//   e.target.nextElementSibling.style.display = "flex";
-// };
+const tLayoutListOverHandler = (e) => {
+  header.classList.add("hover");
+};
 
-// const outHandler = (e) => {
-//   if (e.target.classList.contains("diff")) {
-//     return;
-//   }
-//   header.classList.remove("hover");
-//   e.target.parentNode.classList.remove("active");
-//   e.target.nextElementSibling.style.display = "none";
-// };
+const tLayoutListOutHandler = (e) => {
+  //   console.log(e.target);
+  header.classList.remove("hover");
+};
 
-// for (let i = 0; i < headerOneDepListA.length; i++) {
-//   headerOneDepListA[i].addEventListener("mouseover", overHandler);
-//   headerOneDepListA[i].addEventListener("mouseout", outHandler);
-// }
+for (let i = 0; i < tLayoutList.length; i++) {
+  tLayoutList[i].addEventListener("mouseover", tLayoutListOverHandler);
+  tLayoutList[i].addEventListener("mouseout", tLayoutListOutHandler);
+}
 
-// // 헤더가 선택되고 LNB 영역으로 마우스 오버시 유지
-// const tlayout = document.querySelectorAll(".t-layout");
+// two-depth 마우스 오버시
+const twoDepList = document.querySelectorAll(".two-dep");
+const twoDepLi = document.querySelectorAll(".two-dep > li");
 
-// const tlayoutOverHandler = (i) => {
-//   return (e) => {
-//     header.classList.add("hover");
-//     tlayout[i].style.display = "flex";
-//   };
-// };
+const twoDepListOverHandler = (e) => {
+  //   console.log(e.target.classList);
+  if (e.target.classList.contains("depth2")) {
+    removeActive(twoDepLi);
+    e.target.parentNode.classList.add("active");
+  }
+};
 
-// const tlayoutOutHandler = (i) => {
-//   return (e) => {
-//     header.classList.remove("hover");
-//     tlayout[i].style.display = "none";
-//   };
-// };
+for (let i = 0; i < twoDepList.length; i++) {
+  twoDepList[i].addEventListener("mouseover", twoDepListOverHandler);
+}
 
-// for (let i = 0; i < tlayout.length; i++) {
-//   tlayout[i].addEventListener("mouseover", tlayoutOverHandler(i));
-//   tlayout[i].addEventListener("mouseout", tlayoutOutHandler(i));
-// }
+// thr-depth 마우스 오버, 아웃시
+const thrDepList = document.querySelectorAll(".thr-dep");
+const thrDepLi = document.querySelectorAll(".thr-dep > li");
 
-// // LNB twodep에 마우스 호버 시 thrdep 출력
-// const twodep = document.querySelectorAll(".two-dep");
+const thrDepListOverHandler = (e) => {
+  if (e.target.classList.contains("depth3")) {
+    e.target.parentNode.classList.add("active");
+  }
+};
 
-// const twodepOverHandler = (e) => {
-//   if (e.target.classList.contains("depth2")) {
-//     e.target.parentNode.classList.add("active");
-//   }
-//   if (e.target.classList.contains("hasChild")) {
-//     console.dir(e.target);
-//     e.target.nextElementSibling.style.display = "block";
-//   }
-// };
+const thrDepListOutHandler = (e) => {
+  if (e.target.classList.contains("thr-dep")) {
+    removeActive(thrDepLi);
+  }
+};
 
-// const twodepOutHandler = (e) => {
-//   if (e.target.classList.contains("depth2")) {
-//     // e.target.parentNode.classList.remove("active");
-//   }
-// };
-
-// for (let i = 0; i < twodep.length; i++) {
-//   twodep[i].addEventListener("mouseover", twodepOverHandler);
-//   twodep[i].addEventListener("mouseout", twodepOutHandler);
-// }
+for (let i = 0; i < thrDepList.length; i++) {
+  thrDepList[i].addEventListener("mouseover", thrDepListOverHandler);
+  thrDepList[i].addEventListener("mouseover", thrDepListOutHandler);
+}
