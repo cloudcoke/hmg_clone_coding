@@ -111,7 +111,7 @@ body {
   font-family: "HyundaiHarmony", "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
   font-weight: 700;
   font-size: 14px;
-  background: #000;
+  background: #888;
   color: #444;
 }
 
@@ -171,14 +171,14 @@ nav {
 
 .t-layout {
   /* base .inner */
-  display: flex;
+  /* display: flex; */
+  display: none;
   position: absolute;
   top: 90px;
   left: 0px;
   width: 100%;
   height: 290px;
   padding: 40px 0 80px 0;
-  /* display: none; */
 }
 
 .intro-cate {
@@ -230,6 +230,7 @@ nav {
   width: 100%;
   height: 100%;
   border-left: 1px solid #333;
+  display: none;
 }
 
 .thr-dep > li + li {
@@ -242,44 +243,6 @@ nav {
   font-weight: 400;
   color: rgba(255, 255, 255, 0.55);
 }
-
-/* 작업을 위한 임시 class */
-.center {
-  display: none;
-}
-
-.driving-program {
-  display: none;
-}
-
-.thr-experience {
-  display: none;
-}
-.thr-pleasure {
-  display: none;
-}
-
-.service {
-  display: none;
-}
-
-.thr-N-festival {
-  display: none;
-}
-
-.thr-N-e-festival {
-  display: none;
-}
-
-.thr-N-cycle-festival {
-  display: none;
-}
-
-.hyudai-n {
-  display: none;
-}
-
-/* 작업을 위한 임시 class 끝*/
 
 .utils {
   display: flex;
@@ -313,16 +276,19 @@ nav {
   font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
 }
 
-.btn-wrap > a {
-  display: block;
-  height: 48px;
+.btn.high {
   line-height: 46px;
-  color: #222;
-  margin-left: 10px;
-  padding: 0 32px;
   border: 1px solid #fff;
   border-radius: 50px;
-  background: #fff;
+  padding: 0 32px;
+  height: 48px;
+  color: #222;
+  margin-left: 10px;
+  background: linear-gradient(120deg, #ff8933, #ea2e2e, #fff, #fff);
+  background-size: 400%;
+  background-position: 90% 90%;
+  background-repeat: no-repeat;
+  transition: all 0.7s ease;
 }
 
 .btn-wrap > a > span {
@@ -344,7 +310,8 @@ nav {
   border-radius: 16px;
   background: #fff;
   width: 196px;
-  /* display: none; */
+  /* 임시 제거 */
+  display: none;
 }
 
 .slide-box > a {
@@ -356,4 +323,48 @@ nav {
 .slide-box > a > span {
   color: rgba(0, 0, 0, 0.55);
   line-height: 16px;
+}
+
+/* 헤더 애니메이션 */
+header::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 0;
+  background: #000;
+  transition: height 0.2s ease-out;
+}
+
+header.hover::before {
+  height: 380px;
+}
+
+/* header.hover::before .t-layout:hover {
+  height: 380px;
+} */
+
+.one-dep > li.active > a {
+  color: #f25130;
+}
+
+.btn.high:hover {
+  color: #fff;
+  border: 1px solid #ff8933;
+  background-position: 0% 0%;
+  transition: all 0.7s ease;
+}
+.btn.high:hover > span {
+  background: url(../images/low_arrow_white.svg) no-repeat right center;
+}
+
+.btn.high[checked="checked"] {
+  color: #fff;
+  border: 1px solid #ff8933;
+  background-position: 0% 0%;
+}
+
+.btn.high[checked="checked"] > span {
+  background: url(../images/low_arrow_white.svg) no-repeat right center;
 }
