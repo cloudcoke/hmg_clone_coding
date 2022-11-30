@@ -144,7 +144,6 @@ for (let i = 0; i < thrDepList.length; i++) {
 }
 
 // slide 구현
-
 const init = () => {
   let count = 1;
   let intervalId = 0;
@@ -154,34 +153,115 @@ const init = () => {
   const img1 = `background: url("/public/images/slider1.jpg") center center / cover no-repeat;`;
   const img2 = `background: url("/public/images/slider2.jpg") center center / cover no-repeat;`;
 
+  const animation = (animationName) => `animation: 1s ease 0s 1 alternate forwards running ${animationName}`;
+
   const firstDisplay = () => {
     slide1.style = `${img1} left:0; opacity:1;`;
+    slide1Display();
   };
 
   const slide1Display = () => {
     // clearInterval(intervalId);
     // console.log("one");
-    slide2.style = `${img2} opacity:0; animation: 1s ease 0s 1 alternate forwards running slideDisplay`;
+    slide2.style = `${img2} opacity:0; ` + animation("slideDisplay");
+    slide2TxtHide();
     timer = setTimeout(() => {
-      slide2.style = `${img2} left:100%; opacity:0; animation: 1s ease 0s 1 alternate forwards running slideOut`;
-      slide1.style = `${img1} left:0; opacity:1; animation: 1s ease 0s 1 alternate forwards running slideIn`;
-    }, 1000);
+      slide2.style = `${img2} left:100%; opacity:0; ` + animation("slideOut");
+      slide1.style = `${img1} left:0; opacity:1; ` + animation("slideIn");
+      setTimeout(() => {
+        slide1TxtDisplay();
+      }, 1000);
+    }, 2000);
   };
 
   const slide2Display = () => {
-    // clearInterval(intervalId);
-    // console.log("two");
-    slide1.style = `${img1} opacity:0; animation: 1s ease 0s 1 alternate forwards running slideDisplay`;
+    slide1.style = `${img1} opacity:0; ` + animation("slideDisplay");
+    slide1TxtHide();
     timer = setTimeout(() => {
-      slide1.style = `${img1} left:100%; opacity:0; animation: 1s ease 0s 1 alternate forwards running slideOut`;
-      slide2.style = `${img2} left:0%; opacity:1; animation: 1s ease 0s 1 alternate forwards running slideIn`;
-    }, 1000);
+      slide1.style = `${img1} left:100%; opacity:0; ` + animation("slideOut");
+      slide2.style = `${img2} left:0%; opacity:1; ` + animation("slideIn");
+      setTimeout(() => {
+        silde2TxtDisplay();
+      }, 1000);
+    }, 2000);
+  };
+
+  // slide 글
+  const txtAreaList = document.querySelectorAll(".txt-area");
+  const area1 = txtAreaList[0];
+  const area2 = txtAreaList[1];
+
+  const txtPSpanArea1 = document.querySelectorAll(".txt-area1 > .txt > p > span");
+  const triggerArrowAnimateList = document.querySelectorAll(".btn-wrap.trigger-arrow-animate > a");
+
+  const txtPSpanArea1HMG = txtPSpanArea1[0];
+  const txtPSpanArea1Drive = txtPSpanArea1[1];
+  const txtPSpanArea1Center = txtPSpanArea1[2];
+
+  const txtPSpanArea2Program = document.querySelector(".txt-area2 > .txt > p > span");
+  // slide 1
+  // .txt-area => display:block; => display:none; [area1]
+  // .txt > p > span => top: 0px; => top: 80px;
+  // .txt-area > trigger-arrow-animate => opacity: 1; top: 0px; => opacity: 0 -> 1
+
+  const slide1TxtDisplay = () => {
+    // console.log(txtAreaList[0].style);
+    area1.style = "display:block;";
+    txtPSpanArea1HMG.style = "opacity: 0";
+    txtPSpanArea1Drive.style = "opacity: 0";
+    txtPSpanArea1Center.style = "opacity: 0";
+    triggerArrowAnimateList[0].style = "color: #000";
+    setTimeout(() => {
+      txtPSpanArea1HMG.style = animation("slideTxtUp");
+      setTimeout(() => {
+        txtPSpanArea1Drive.style = animation("slideTxtUp");
+        setTimeout(() => {
+          txtPSpanArea1Center.style = animation("slideTxtUp");
+          triggerArrowAnimateList[0].style = animation("slideOpacity1");
+        }, 200);
+      }, 200);
+    }, 50);
+  };
+
+  const slide1TxtHide = () => {
+    txtPSpanArea1HMG.style = animation("slideTxtDown");
+    setTimeout(() => {
+      txtPSpanArea1Drive.style = animation("slideTxtDown");
+      setTimeout(() => {
+        txtPSpanArea1Center.style = animation("slideTxtDown");
+        triggerArrowAnimateList[0].style = animation("slideOpacity2");
+        setTimeout(() => {
+          area1.style = "display: none";
+        }, 500);
+      }, 200);
+    }, 200);
+  };
+
+  const silde2TxtDisplay = () => {
+    area2.style = "display:block";
+    txtPSpanArea2Program.style = "opacity: 0";
+    triggerArrowAnimateList[1].style = "color: #000";
+    setTimeout(() => {
+      txtPSpanArea2Program.style = animation("slideTxtUp");
+      triggerArrowAnimateList[1].style = animation("slideOpacity1");
+    }, 200);
+  };
+
+  const slide2TxtHide = () => {
+    txtPSpanArea2Program.style = animation("slideTxtDown");
+    triggerArrowAnimateList[1].style = animation("slideOpacity2");
+    setTimeout(() => {
+      {
+        area2.style = "display: none";
+      }
+    }, 500);
   };
 
   const slide = () => {
     // slide1 보이기
     if (count === 0) {
       slide1Display();
+
       return (count = 1);
     }
     // slide2 보이기
@@ -190,54 +270,8 @@ const init = () => {
       return (count = 0);
     }
   };
-  // firstDisplay();
-  // intervalId = setInterval(slide, 3000);
+  firstDisplay();
+  intervalId = setInterval(slide, 8000);
 };
 
 document.addEventListener("DOMContentLoaded", init);
-
-const txtAreaList = document.querySelectorAll(".txt-area");
-const c1 = document.querySelector("#c1");
-const c2 = document.querySelector("#c2");
-const triggerArrowAnimateList = document.querySelectorAll(".btn-wrap.trigger-arrow-animate > a");
-const animation = (animationName) => `animation: 1s ease 0s 1 alternate forwards running ${animationName}`;
-const area1 = txtAreaList[0];
-const area2 = txtAreaList[1];
-console.log(triggerArrowAnimateList[0].style);
-// slide 1
-// .txt-area => display:block; => display:none;
-// .txt > p > span => top: 0px; => top: 80px;
-// .txt-area > trigger-arrow-animate => opacity: 1; top: 0px; => opacity: 0 -> 1
-
-const c1Handler = () => {
-  txtAreaList[0].style = "display: block";
-  // console.log(txtAreaList[0].style);
-  console.dir(txtAreaList[0].children[0].children[0].children[0].style);
-  txtAreaList[0].children[0].children[0].children[0].style = animation("slideTxtUp");
-  setTimeout(() => {
-    txtAreaList[0].children[0].children[1].children[0].style = animation("slideTxtUp");
-    setTimeout(() => {
-      txtAreaList[0].children[0].children[2].children[0].style = animation("slideTxtUp");
-      setTimeout(() => {
-        triggerArrowAnimateList[0].style = animation("slideOpacity1");
-      }, 100);
-    }, 100);
-  }, 100);
-};
-
-const c2Handler = () => {
-  txtAreaList[0].children[0].children[0].children[0].style = animation("slideTxtDown");
-  setTimeout(() => {
-    txtAreaList[0].children[0].children[1].children[0].style = animation("slideTxtDown");
-    setTimeout(() => {
-      txtAreaList[0].children[0].children[2].children[0].style = animation("slideTxtDown");
-      setTimeout(() => {
-        triggerArrowAnimateList[0].style = animation("slideOpacity2");
-        txtAreaList[0].style = "display: none";
-      }, 500);
-    }, 100);
-  }, 100);
-};
-
-c1.addEventListener("click", c1Handler);
-c2.addEventListener("click", c2Handler);
