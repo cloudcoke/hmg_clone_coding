@@ -111,7 +111,7 @@ body {
   font-family: "HyundaiHarmony", "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
   font-weight: 700;
   font-size: 14px;
-  background: #888;
+  /* background: #888; */
   color: #444;
 }
 
@@ -120,9 +120,10 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 10;
 }
 
-.inner {
+header > .inner {
   width: 1440px;
   display: flex;
   justify-content: space-between;
@@ -130,7 +131,7 @@ body {
   position: relative;
 }
 
-.inner > h1 {
+header > .inner > h1 {
   /* base .inner */
   position: absolute;
 }
@@ -310,8 +311,8 @@ nav {
   border-radius: 16px;
   background: #fff;
   width: 196px;
-  /* 임시 제거 */
-  display: none;
+  opacity: 0;
+  /* display: none; */
 }
 
 .slide-box > a {
@@ -385,4 +386,336 @@ header.hover::before {
 
 .thr-dep > li.active .depth3 {
   color: #fff;
+}
+
+@keyframes slideBoxChecked {
+  from {
+    right: -50px;
+    opacity: 0;
+  }
+
+  to {
+    right: 0px;
+    opacity: 1;
+  }
+}
+@keyframes slideBoxUnChecked {
+  from {
+    right: 0px;
+    opacity: 1;
+    display: block;
+  }
+
+  to {
+    right: 50px;
+    opacity: 0;
+    display: none;
+  }
+}
+.btn-rev > span {
+  position: relative;
+}
+
+.btn-rev:hover > span {
+  color: #000;
+}
+
+.btn-rev > span::after {
+  content: "";
+  width: 0;
+}
+
+.btn-rev:hover > span::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #f25130;
+  transition: width 0.2s ease;
+}
+
+main {
+  position: relative;
+}
+
+.visual-wrap {
+  position: relative;
+}
+
+section {
+  position: relative;
+}
+
+.roll-wrap {
+  width: 100%;
+  height: 740px;
+  overflow: hidden;
+}
+
+.roll-wrap .bg-img {
+  /* base section */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.roll-wrap .bg-img .slide1 {
+  /* base section */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* transition: all 1s ease; */
+}
+
+.roll-wrap .bg-img .slide2 {
+  /* base section */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* transition: all 1s ease; */
+}
+
+.roll-wrap .inner {
+  position: relative;
+  margin: 0 auto;
+  width: 1440px;
+  height: 100%;
+}
+
+.roll-wrap .txt-area {
+  /* base .inner */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.roll-wrap .txt-area .txt {
+  position: relative;
+}
+
+.roll-wrap .txt-area .txt > p > span {
+  position: relative;
+  top: 80px;
+}
+
+.f-hm-h1 {
+  font-family: "HyundaiHarmony", "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  font-size: 64px;
+  line-height: 84px;
+  font-weight: 700;
+  /* display: none; */
+}
+.roll-wrap .txt-area .btn-wrap {
+  display: block;
+  position: relative;
+  margin-top: 27px;
+}
+
+.btn-wrap.trigger-arrow-animate > a {
+  color: #fff;
+  text-decoration: underline;
+  position: relative;
+  font-size: 16px;
+  opacity: 0;
+}
+
+.roll-wrap .controler-wrap {
+  /* base .inner */
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+  width: 308px;
+  height: 48px;
+  z-index: 2;
+}
+
+.roll-wrap .controler {
+  display: flex;
+  position: relative;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.roll-wrap .controler .btn-stop {
+  /* base .controler */
+  position: absolute;
+  left: 0;
+  width: 53px;
+  height: 53px;
+}
+
+.roll-wrap .btn-motion .icon-arrow {
+  /* base .controler */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.roll-wrap .btn-motion.play .icon-arrow {
+  background: url(../images/play_btn.svg) no-repeat 0 0;
+}
+
+.roll-wrap .btn-motion.stop .icon-arrow {
+  background: url(../images/stop_btn.svg) no-repeat 0 0;
+}
+
+.roll-wrap .pagination {
+  /* base .controler */
+  position: absolute;
+  left: 70px;
+  width: auto;
+  height: 6px;
+  margin-top: 5px;
+  display: flex;
+}
+
+.roll-wrap .pagination .num {
+  position: relative;
+  font-family: "Malgun Gothic";
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+}
+
+.roll-wrap .pagination .num span {
+  display: inline-block;
+  position: relative;
+  top: 9px;
+  left: 11px;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.visual-wrap .inner {
+  width: 1440px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.float-sns {
+  /* base .inner */
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  z-index: 6;
+}
+
+.float-sns .btn-sns {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #ff8933, #ea2e2e, #000, #000);
+  background-size: 400%;
+  background-position: 90% 90%;
+  transition: all 0.4s ease;
+  width: 48px;
+  height: 48px;
+  font-size: 14px;
+  z-index: 1;
+}
+
+.float-sns .box {
+  /* base .inner */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes slideDisplay {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    display: none;
+    opacity: 0;
+  }
+}
+@keyframes slideOut {
+  from {
+    display: block;
+    left: 0;
+  }
+
+  to {
+    display: none;
+    left: -100%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    display: none;
+    left: 100%;
+  }
+  to {
+    display: block;
+    left: 0;
+  }
+}
+
+@keyframes slideTxtUp {
+  0% {
+    display: none;
+    top: 80px;
+    opacity: 0;
+    color: #000;
+  }
+
+  100% {
+    display: block;
+    top: 0;
+    opacity: 1;
+    color: #fff;
+  }
+}
+
+@keyframes slideTxtDown {
+  from {
+    display: block;
+    top: 0;
+    opacity: 1;
+    color: #fff;
+  }
+  to {
+    display: none;
+    top: 80px;
+    opacity: 0;
+    color: #000;
+  }
+}
+@keyframes slideOpacity1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideOpacity2 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
