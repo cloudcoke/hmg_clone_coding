@@ -105,6 +105,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 img {
@@ -116,6 +117,7 @@ body {
   font-weight: 700;
   font-size: 14px;
   /* background: #888; */
+  line-height: 1;
   color: #444;
 }
 
@@ -694,6 +696,7 @@ section {
   font-size: 36px;
   line-height: 48px;
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .program .btn-wrap {
@@ -925,6 +928,147 @@ section {
 
 .d-center .btn-tab-wrap a.active::after {
   width: 300px;
+}
+
+.users-event {
+  padding: 80px 0 120px;
+  background: #f5f5f5;
+}
+
+.users-event .inner {
+  display: flex;
+}
+
+.notice {
+  margin-right: 70px;
+  width: 330px;
+}
+
+.notice .inner {
+  display: block;
+  width: 100%;
+}
+
+.notice .title {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.notice .list-wrap {
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  position: relative;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #ddd;
+}
+
+.notice li + li {
+  margin-top: 29px;
+}
+
+.notice .list .subject {
+  display: inline-block;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.notice .list .subject:hover {
+  text-decoration: underline;
+}
+
+.f-hm-p2 {
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.notice .list .date {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+.exhibit {
+  width: calc(100% - 400px);
+}
+
+.exhibit .title {
+  font-size: 24px;
+  line-height: 32px;
+  color: #000;
+}
+
+.exhibit .event-area {
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  margin-top: 24px;
+}
+
+.event-container {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+}
+
+.exhibit .event-slide:nth-child(1) {
+  margin-left: 0;
+}
+
+.exhibit .event-slide {
+  width: 330px;
+  height: 100%;
+  position: relative;
+  margin-left: 24px;
+}
+
+.exhibit .event-slide .img-area {
+  height: 220px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.exhibit .event-slide .img-area img {
+  /* base .img-area */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+.exhibit .event-slide:hover .img-area img {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.exhibit .event-slide .info-area {
+  width: 300px;
+  margin-top: 16px;
+}
+
+.exhibit .event-slide .info-area .tit {
+  height: 56px;
+  overflow: hidden;
+  color: #000;
+  text-overflow: ellipsis;
+}
+
+.exhibit .event-slide .info-area .date {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.55);
 }
 
 @keyframes slideDisplay {
