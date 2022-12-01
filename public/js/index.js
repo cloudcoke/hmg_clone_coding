@@ -147,6 +147,7 @@ for (let i = 0; i < thrDepList.length; i++) {
 const init = () => {
   let count = 1;
   let intervalId = 0;
+  let renderStatus = "before";
   const slide1 = document.querySelector(".slide1");
   const slide2 = document.querySelector(".slide2");
 
@@ -157,33 +158,57 @@ const init = () => {
 
   const firstDisplay = () => {
     slide1.style = `${img1} left:0; opacity:1;`;
-    slide1Display();
+    slideCircleBtnList[0].classList.add("active");
+    slide1TxtDisplay();
   };
 
   const slide1Display = () => {
     // clearInterval(intervalId);
     // console.log("one");
+    renderStatus = "rendering";
+
     slide2.style = `${img2} opacity:0; ` + animation("slideDisplay");
-    slide2TxtHide();
-    timer = setTimeout(() => {
-      slide2.style = `${img2} left:100%; opacity:0; ` + animation("slideOut");
-      slide1.style = `${img1} left:0; opacity:1; ` + animation("slideIn");
+    setTimeout(() => {
+      slide2TxtHide();
       setTimeout(() => {
-        slide1TxtDisplay();
+        if (!slideCircleBtnList[0].classList.contains("active")) {
+          slideCircleBtnList[0].classList.add("active");
+        }
+        slideCircleBtnList[1].classList.remove("active");
+
+        timer = setTimeout(() => {
+          slide2.style = `${img2} left:100%; opacity:0; ` + animation("slideOut");
+          slide1.style = `${img1} left:0; opacity:1; ` + animation("slideIn");
+          setTimeout(() => {
+            slide1TxtDisplay();
+            renderStatus = "finish";
+          }, 1000);
+        }, 2000);
       }, 1000);
-    }, 2000);
+    }, 0);
   };
 
   const slide2Display = () => {
+    renderStatus = "rendering";
+
     slide1.style = `${img1} opacity:0; ` + animation("slideDisplay");
-    slide1TxtHide();
-    timer = setTimeout(() => {
-      slide1.style = `${img1} left:100%; opacity:0; ` + animation("slideOut");
-      slide2.style = `${img2} left:0%; opacity:1; ` + animation("slideIn");
+    setTimeout(() => {
+      slide1TxtHide();
       setTimeout(() => {
-        silde2TxtDisplay();
+        if (!slideCircleBtnList[1].classList.contains("acitve")) {
+          slideCircleBtnList[1].classList.add("active");
+        }
+        slideCircleBtnList[0].classList.remove("active");
+        timer = setTimeout(() => {
+          slide1.style = `${img1} left:100%; opacity:0; ` + animation("slideOut");
+          slide2.style = `${img2} left:0%; opacity:1; ` + animation("slideIn");
+          setTimeout(() => {
+            silde2TxtDisplay();
+            renderStatus = "finish";
+          }, 1000);
+        }, 2000);
       }, 1000);
-    }, 2000);
+    }, 0);
   };
 
   // slide 글
@@ -257,6 +282,71 @@ const init = () => {
     }, 500);
   };
 
+  // slideControl Btn
+  const slideControl = document.querySelector(".btn-stop > .icon-arrow");
+
+  const slideControlHandler = (e) => {
+    // play
+    if (e.target.parentNode.classList.contains("play")) {
+      clearInterval(intervalId);
+      intervalId = setInterval(slide, 8000);
+      e.target.parentNode.classList.remove("play");
+      e.target.parentNode.classList.add("stop");
+      return;
+    }
+    // stop
+    if (e.target.parentNode.classList.contains("stop")) {
+      e.target.parentNode.classList.remove("stop");
+      e.target.parentNode.classList.add("play");
+      clearInterval(intervalId);
+      intervalId = "clear";
+      return;
+    }
+  };
+
+  slideControl.addEventListener("click", slideControlHandler);
+
+  const slideStop = () => {
+    slideControl.parentNode.classList.remove("stop");
+    slideControl.parentNode.classList.add("play");
+    clearInterval(intervalId);
+  };
+
+  // slideControl Circle Btn
+  const slideCircleBtnList = document.querySelectorAll(".pagination .num");
+  const slideCircleBtnSpanList = document.querySelectorAll(".pagination .num span");
+
+  const slideCircle1BtnHandler = (e) => {
+    if (renderStatus === "rendering") {
+      return;
+    }
+    clearInterval(intervalId);
+    if (slideCircleBtnList[1].classList.contains("active")) {
+      slideCircleBtnList[1].classList.remove("active");
+      slideCircleBtnList[0].classList.add("active");
+      slide1Display();
+      slideStop();
+      count = 1;
+    }
+  };
+
+  const slideCircle2BtnHandler = (e) => {
+    if (renderStatus === "rendering") {
+      return;
+    }
+    clearInterval(intervalId);
+    if (slideCircleBtnList[0].classList.contains("active")) {
+      slideCircleBtnList[0].classList.remove("active");
+      slideCircleBtnList[1].classList.add("active");
+      slide2Display();
+      slideStop();
+      count = 0;
+    }
+  };
+
+  slideCircleBtnList[0].addEventListener("click", slideCircle1BtnHandler);
+  slideCircleBtnList[1].addEventListener("click", slideCircle2BtnHandler);
+
   const slide = () => {
     // slide1 보이기
     if (count === 0) {
@@ -270,8 +360,72 @@ const init = () => {
       return (count = 0);
     }
   };
+  slideCircleBtnList[0].classList.add("active");
   firstDisplay();
   intervalId = setInterval(slide, 8000);
 };
 
 document.addEventListener("DOMContentLoaded", init);
+
+const snsBtn = document.querySelector(".btn-sns");
+const snsBtnBox = document.querySelector(".float-sns .box");
+const snsBtnList = document.querySelectorAll(".float-sns .box .icon");
+const instagramBtn = snsBtnList[0];
+const youtubeBtn = snsBtnList[1];
+const facebookBtn = snsBtnList[2];
+
+const animation = (animationName) => `animation: 0.5s ease 0s 1 alternate forwards running ${animationName}`;
+
+const snsBtnHandler = () => {
+  if (snsBtn.classList.contains("active")) {
+    snsBtn.classList.remove("active");
+    snsBtn.style = "background-position: 90% 90%";
+    instagramBtn.style = animation("instagramBtnHide");
+    youtubeBtn.style = animation("youtubeBtnHide");
+    facebookBtn.style = animation("facebookBtnHide");
+    setTimeout(() => {
+      snsBtnBox.style = "display: none";
+    }, 300);
+  } else {
+    snsBtn.classList.add("active");
+    snsBtn.style = "background-position: 0% 0%";
+    snsBtnBox.style = "display: block";
+    instagramBtn.style = animation("instagramBtnDisplay");
+    youtubeBtn.style = animation("youtubeBtnDisplay");
+    facebookBtn.style = animation("facebookBtnDisplay");
+  }
+};
+
+snsBtn.addEventListener("click", snsBtnHandler);
+
+const swiperSlideList = document.querySelectorAll(".swiper-slide");
+const swiperSlideBtnList = document.querySelectorAll(".btn-tab");
+
+console.log(swiperSlideList);
+console.log(swiperSlideBtnList);
+const slideBtnHandler = (i) => {
+  return (e) => {
+    otherActiveDel(i, swiperSlideBtnList);
+    swiperSlideBtnList[i].classList.add("active");
+    swiperSlideList[i].style = "opacity: 1";
+    otherImgDel(i, swiperSlideList);
+  };
+};
+
+for (let i = 0; i < swiperSlideBtnList.length; i++) {
+  swiperSlideBtnList[i].addEventListener("click", slideBtnHandler(i));
+}
+
+const otherActiveDel = (index, list) => {
+  for (let i = 0; i < list.length; i++) {
+    if (index === i) continue;
+    list[i].classList.remove("active");
+  }
+};
+
+const otherImgDel = (index, list) => {
+  for (let i = 0; i < list.length; i++) {
+    if (index === i) continue;
+    list[i].style = "opacity: 0";
+  }
+};
