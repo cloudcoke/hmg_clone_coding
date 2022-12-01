@@ -403,6 +403,10 @@ const swiperSlideBtnList = document.querySelectorAll(".btn-tab");
 
 console.log(swiperSlideList);
 console.log(swiperSlideBtnList);
+
+swiperSlideBtnList[0].classList.add("active");
+swiperSlideList[0].style = "opacity: 1";
+
 const slideBtnHandler = (i) => {
   return (e) => {
     otherActiveDel(i, swiperSlideBtnList);
