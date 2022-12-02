@@ -23,13 +23,17 @@ const innerOverHandler = (e) => {
     header.classList.remove("hover");
     tLayoutRemoveFlex();
     removeActive(headerOneDepList);
+    removeActive(twoDepLi);
     const depth1Li = e.target.parentNode.classList;
     depth1Li.add("active");
     return;
   }
+
   if (e.target.classList.contains("depth1")) {
     removeActive(headerOneDepList);
     tLayoutRemoveFlex();
+    removeActive(twoDepLi);
+    twoDepList[1].children[1].classList.add("active");
     const depth1Li = e.target.parentNode.classList;
     depth1Li.add("active");
     const tLayOut = e.target.nextElementSibling;
@@ -56,6 +60,10 @@ const innerLeaveHandler = (e) => {
 };
 
 const innerOutHandler = (e) => {
+  console.log(e.target);
+  if (e.target.classList.contains("inner")) {
+    header.classList.remove("hover");
+  }
   if (e.target.tagName === "NAV") {
     header.classList.remove("hover");
   }
@@ -97,7 +105,6 @@ const tLayoutListOverHandler = (e) => {
 };
 
 const tLayoutListOutHandler = (e) => {
-  //   console.log(e.target);
   header.classList.remove("hover");
 };
 
@@ -111,7 +118,6 @@ const twoDepList = document.querySelectorAll(".two-dep");
 const twoDepLi = document.querySelectorAll(".two-dep > li");
 
 const twoDepListOverHandler = (e) => {
-  //   console.log(e.target.classList);
   if (e.target.classList.contains("depth2")) {
     removeActive(twoDepLi);
     e.target.parentNode.classList.add("active");
@@ -163,8 +169,6 @@ const init = () => {
   };
 
   const slide1Display = () => {
-    // clearInterval(intervalId);
-    // console.log("one");
     renderStatus = "rendering";
 
     slide2.style = `${img2} opacity:0; ` + animation("slideDisplay");
@@ -224,13 +228,8 @@ const init = () => {
   const txtPSpanArea1Center = txtPSpanArea1[2];
 
   const txtPSpanArea2Program = document.querySelector(".txt-area2 > .txt > p > span");
-  // slide 1
-  // .txt-area => display:block; => display:none; [area1]
-  // .txt > p > span => top: 0px; => top: 80px;
-  // .txt-area > trigger-arrow-animate => opacity: 1; top: 0px; => opacity: 0 -> 1
 
   const slide1TxtDisplay = () => {
-    // console.log(txtAreaList[0].style);
     area1.style = "display:block;";
     txtPSpanArea1HMG.style = "opacity: 0";
     txtPSpanArea1Drive.style = "opacity: 0";
@@ -363,6 +362,90 @@ const init = () => {
   slideCircleBtnList[0].classList.add("active");
   firstDisplay();
   intervalId = setInterval(slide, 8000);
+
+  //  scroll 이벤트
+  const floatBtn = document.querySelector(".float-btns");
+  const fadeUpList = document.querySelectorAll("[data-aos=fade-up]");
+  const startPageY = window.pageYOffset;
+  // IntersectionObserver 설정
+  const options = {
+    threshold: 0.5,
+  };
+
+  const callback1 = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        observer.unobserve(entry.target);
+        fadeUpList[0].classList.remove("aos-init");
+        fadeUpList[0].classList.add("aos-animate");
+      }
+    });
+  };
+  const callback2 = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        observer.unobserve(entry.target);
+        fadeUpList[1].classList.remove("aos-init");
+        fadeUpList[2].classList.remove("aos-init");
+        fadeUpList[1].classList.add("aos-animate");
+        fadeUpList[2].classList.add("aos-animate");
+      }
+    });
+  };
+  const callback3 = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        observer.unobserve(entry.target);
+        fadeUpList[3].classList.remove("aos-init");
+        fadeUpList[4].classList.remove("aos-init");
+        fadeUpList[5].classList.remove("aos-init");
+        fadeUpList[3].classList.add("aos-animate");
+        fadeUpList[4].classList.add("aos-animate");
+        fadeUpList[5].classList.add("aos-animate");
+      }
+    });
+  };
+
+  const observer1 = new IntersectionObserver(callback1, options);
+  const observer2 = new IntersectionObserver(callback2, options);
+  const observer3 = new IntersectionObserver(callback3, options);
+
+  // 시작화면의 위치가 처음이 아니라면 컨텐츠 모두 띄우기
+  if (startPageY >= 80) {
+    for (let i = 0; i < fadeUpList.length; i++) {
+      fadeUpList[i].classList.remove("aos-init");
+      fadeUpList[i].classList.add("aos-animate");
+    }
+  }
+
+  const scrollLocationHandler = () => {
+    if (window.scrollY > 0) {
+      header.classList.add("active");
+    }
+
+    if (window.scrollY > 10) {
+      floatBtn.style = "visibility: visible; opacity: 1";
+    } else {
+      floatBtn.style = "visibility: hidden; opacity: 0";
+    }
+    //  시작화면의 위치가 처음이라면 해당 컨텐츠 위치로 이동했을 때 띄우기
+    if (startPageY < 80) {
+      observer1.observe(fadeUpList[0]);
+      observer2.observe(fadeUpList[1]);
+      observer3.observe(fadeUpList[3]);
+    }
+    if (window.scrollY >= 2640) {
+      floatBtn.classList.add("freeze");
+    } else {
+      floatBtn.classList.remove("freeze");
+    }
+
+    if (window.scrollY === 0) {
+      header.classList.remove("active");
+    }
+  };
+
+  window.addEventListener("scroll", scrollLocationHandler);
 };
 
 document.addEventListener("DOMContentLoaded", init);
@@ -400,9 +483,6 @@ snsBtn.addEventListener("click", snsBtnHandler);
 
 const swiperSlideList = document.querySelectorAll(".swiper-slide");
 const swiperSlideBtnList = document.querySelectorAll(".btn-tab");
-
-console.log(swiperSlideList);
-console.log(swiperSlideBtnList);
 
 swiperSlideBtnList[0].classList.add("active");
 swiperSlideList[0].style = "opacity: 1";
