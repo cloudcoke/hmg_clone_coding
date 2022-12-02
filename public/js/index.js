@@ -60,7 +60,6 @@ const innerLeaveHandler = (e) => {
 };
 
 const innerOutHandler = (e) => {
-  console.log(e.target);
   if (e.target.classList.contains("inner")) {
     header.classList.remove("hover");
   }
