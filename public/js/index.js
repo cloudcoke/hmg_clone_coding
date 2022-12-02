@@ -156,8 +156,8 @@ const init = () => {
   const slide1 = document.querySelector(".slide1");
   const slide2 = document.querySelector(".slide2");
 
-  const img1 = `background: url("/public/images/slider1.jpg") center center / cover no-repeat;`;
-  const img2 = `background: url("/public/images/slider2.jpg") center center / cover no-repeat;`;
+  const img1 = `background: url("public/images/slider1.jpg") center center / cover no-repeat;`;
+  const img2 = `background: url("public/images/slider2.jpg") center center / cover no-repeat;`;
 
   const animation = (animationName) => `animation: 1s ease 0s 1 alternate forwards running ${animationName}`;
 
