@@ -127,6 +127,11 @@ body {
   display: flex;
   justify-content: center;
   z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.transparent.active {
+  background: #000;
 }
 
 .inner {
@@ -733,6 +738,23 @@ section {
   margin-top: 40px;
 }
 
+.aos-init {
+  transition-timing-function: ease;
+  transition-duration: 0.4s;
+  opacity: 0;
+  transition-property: opacity, transform;
+  transform: translate3d(0, 100px, 0);
+}
+
+.aos-animate {
+  transition-delay: 50ms;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-timing-function: ease;
+  transition-duration: 0.4s;
+  transition-property: opacity, transform;
+}
+
 .program .list .p-name {
   font-size: 22px;
   font-weight: 500;
@@ -1069,6 +1091,182 @@ section {
   font-weight: 400;
   margin-top: 8px;
   color: rgba(0, 0, 0, 0.55);
+}
+
+footer {
+  font-family: "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  position: relative;
+  padding: 40px 0;
+  border-top: 2px solid #333;
+  background: #000;
+}
+
+footer .links-box {
+  display: flex;
+}
+
+footer .links-box .f-hm-p3 {
+  margin-right: 24px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+footer .links-box a.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+footer .opt-time {
+  /* base footer */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 62px;
+  right: 0;
+}
+
+footer .opt-time .word {
+  margin-right: 15px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+footer .opt-time strong {
+  font-size: 24px;
+  font-family: "HyundaiHarmony", "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif;
+  color: rgba(255, 255, 255, 1);
+}
+
+footer .family-site {
+  /* base footer */
+  position: absolute;
+  top: -6px;
+  right: 0;
+}
+
+footer .family-site .form-group {
+  display: flex;
+}
+select {
+  appearance: none;
+  border: none;
+}
+footer .family-site .form-group .form-select {
+  width: 280px;
+  height: 40px;
+  border-bottom: 1px solid #fff;
+}
+
+#fmlsite {
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: url(/public/images/select_btn.png) no-repeat right center / 28px 28px;
+  padding: 0 30px 8px 0;
+}
+
+#fmlsite option {
+  color: #444;
+  padding: 10px;
+}
+
+footer .family-site .btn-go {
+  display: block;
+  margin-left: 9px;
+  padding: 13px 16px 14px 15px;
+  font-size: 13px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.55);
+  background: #222;
+}
+
+footer .company-info-wrap {
+  margin-top: 40px;
+  font-weight: 400;
+}
+
+footer .company-info .c-name {
+  display: block;
+  font-size: 16px;
+  padding-bottom: 8px;
+  cursor: default;
+  color: #fff;
+}
+
+footer .company-info .c-details {
+  padding-bottom: 24px;
+  font-size: 13px;
+  line-height: 19px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+footer .company-info .c-details::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+footer .company-info .c-details .gubun {
+  position: relative;
+  margin-right: 4px;
+  padding-right: 10px;
+}
+
+footer .company-info .c-details > div {
+  float: left;
+}
+
+footer .company-info .c-details .gubun::after {
+  /* base .gubun */
+  content: "/";
+  position: absolute;
+  top: -1px;
+  right: 0;
+}
+
+footer .sns-wrap {
+  /* base  footer .inner */
+  position: absolute;
+  display: flex;
+  bottom: -16px;
+  right: 0;
+  /* margin-top: 10px; */
+}
+
+footer .sns-wrap img {
+  width: 48px;
+}
+
+footer .copyright {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 14px;
+}
+
+footer .web-accessibility-mark {
+  /* base footer .inner */
+  position: absolute;
+  top: 100px;
+  right: 0;
+}
+
+footer .float-btns {
+  display: block;
+  position: fixed;
+  right: 24px;
+  bottom: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s ease;
+}
+
+footer .float-btns.freeze {
+  /* base footer .inner */
+  position: absolute;
+  top: -84px;
 }
 
 @keyframes slideDisplay {
