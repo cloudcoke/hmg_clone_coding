@@ -416,18 +416,19 @@ const init = () => {
       fadeUpList[i].classList.add("aos-animate");
     }
   }
-
+  if (window.pageYOffset > 0) {
+    header.classList.add("active");
+  }
   const scrollLocationHandler = () => {
-    if (window.scrollY > 0) {
-      header.classList.add("active");
-    }
-
     if (window.scrollY > 10) {
       floatBtn.style = "visibility: visible; opacity: 1";
     } else {
       floatBtn.style = "visibility: hidden; opacity: 0";
     }
     //  시작화면의 위치가 처음이라면 해당 컨텐츠 위치로 이동했을 때 띄우기
+    if (window.scrollY > 0) {
+      header.classList.add("active");
+    }
     if (startPageY < 80) {
       observer1.observe(fadeUpList[0]);
       observer2.observe(fadeUpList[1]);
