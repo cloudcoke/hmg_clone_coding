@@ -1114,6 +1114,10 @@ footer .links-box a.active {
   color: rgba(255, 255, 255, 1);
 }
 
+footer .links-box a:hover {
+  text-decoration: underline;
+}
+
 footer .opt-time {
   /* base footer */
   position: absolute;
