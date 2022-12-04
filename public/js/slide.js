@@ -24,9 +24,7 @@ const init = () => {
     setTimeout(() => {
       slide2TxtHide();
       setTimeout(() => {
-        if (!slideCircleBtnList[0].classList.contains("active")) {
-          slideCircleBtnList[0].classList.add("active");
-        }
+        slideCircleBtnList[0].classList.add("active");
         slideCircleBtnList[1].classList.remove("active");
 
         timer = setTimeout(() => {
@@ -48,9 +46,7 @@ const init = () => {
     setTimeout(() => {
       slide1TxtHide();
       setTimeout(() => {
-        if (!slideCircleBtnList[1].classList.contains("acitve")) {
-          slideCircleBtnList[1].classList.add("active");
-        }
+        slideCircleBtnList[1].classList.add("active");
         slideCircleBtnList[0].classList.remove("active");
         timer = setTimeout(() => {
           slide1.style = `${img1} left:100%; opacity:0; ` + animation("slideOut");

@@ -19,12 +19,13 @@ const tLayoutRemoveFlex = () => {
 
 // 헤더에 마우스 오버시 active
 const innerOverHandler = (e) => {
+  const depth1Li = e.target.parentNode.classList;
+  // 일정/이벤트
   if (e.target.classList.contains("diff")) {
     header.classList.remove("hover");
     tLayoutRemoveFlex();
     removeActive(headerOneDepList);
     removeActive(twoDepLi);
-    const depth1Li = e.target.parentNode.classList;
     depth1Li.add("active");
     return;
   }
@@ -34,7 +35,6 @@ const innerOverHandler = (e) => {
     tLayoutRemoveFlex();
     removeActive(twoDepLi);
     twoDepList[1].children[1].classList.add("active");
-    const depth1Li = e.target.parentNode.classList;
     depth1Li.add("active");
     const tLayOut = e.target.nextElementSibling;
     tLayOut.style.display = "flex";
