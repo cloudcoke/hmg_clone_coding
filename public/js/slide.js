@@ -17,7 +17,7 @@ const init = () => {
     slide1TxtDisplay();
   };
 
-  const slide1Display = () => {
+  const slide1Display = (animationName = "slideIn") => {
     renderStatus = "rendering";
 
     slide2.style = `${img2} opacity:0; ` + animation("slideDisplay");
@@ -29,7 +29,7 @@ const init = () => {
 
         timer = setTimeout(() => {
           slide2.style = `${img2} left:100%; opacity:0; ` + animation("slideOut");
-          slide1.style = `${img1} left:0; opacity:1; ` + animation("slideIn");
+          slide1.style = `${img1} left:0; opacity:1; ` + animation(animationName);
           setTimeout(() => {
             slide1TxtDisplay();
             renderStatus = "finish";
@@ -168,7 +168,7 @@ const init = () => {
     if (slideCircleBtnList[1].classList.contains("active")) {
       slideCircleBtnList[1].classList.remove("active");
       slideCircleBtnList[0].classList.add("active");
-      slide1Display();
+      slide1Display("slideLeftIn");
       slideStop();
       count = 1;
     }
